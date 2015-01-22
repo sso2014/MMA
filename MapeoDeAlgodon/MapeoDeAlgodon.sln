@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapeoDeAlgodon", "MapeoDeAlgodon\MapeoDeAlgodon.csproj", "{52432536-82DB-4035-B351-EE9B3685CBED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{2B7D2EBA-BFCC-432E-82CA-DA8541794CC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Core.Data\Data.csproj", "{2DE880A4-C1FC-4250-92D4-A56EEDE29C72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52432536-82DB-4035-B351-EE9B3685CBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52432536-82DB-4035-B351-EE9B3685CBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52432536-82DB-4035-B351-EE9B3685CBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52432536-82DB-4035-B351-EE9B3685CBED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7D2EBA-BFCC-432E-82CA-DA8541794CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7D2EBA-BFCC-432E-82CA-DA8541794CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7D2EBA-BFCC-432E-82CA-DA8541794CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7D2EBA-BFCC-432E-82CA-DA8541794CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE880A4-C1FC-4250-92D4-A56EEDE29C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE880A4-C1FC-4250-92D4-A56EEDE29C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE880A4-C1FC-4250-92D4-A56EEDE29C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE880A4-C1FC-4250-92D4-A56EEDE29C72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

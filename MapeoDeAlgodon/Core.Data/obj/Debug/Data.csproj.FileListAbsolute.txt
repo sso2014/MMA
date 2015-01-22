@@ -1,0 +1,10 @@
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\bin\Debug\Data.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\bin\Debug\Data.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\bin\Debug\Core.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\bin\Debug\Core.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.Query.resources
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\Core.Data\obj\Debug\Data.ResourceConnection.resources
