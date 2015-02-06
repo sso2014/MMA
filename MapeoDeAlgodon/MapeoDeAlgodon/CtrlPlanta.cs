@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Core.Data;
 
+
 namespace MapeoDeAlgodon
 {
     public partial class CtrlPlanta : UserControl
@@ -17,12 +18,21 @@ namespace MapeoDeAlgodon
         {
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.UserPaint, true);
+            //Save........
+            ds.Tables.Add("nudo");
+            ds.Tables["nudo"].Columns.Add("posx", typeof(int));
+            ds.Tables["nudo"].Columns.Add("posy", typeof(int));
+            ds.Tables["nudo"].Columns.Add("name", typeof(string));
+            ds.Tables["nudo"].Columns.Add("Width", typeof(int));
+            ds.Tables["nudo"].Columns.Add("Height", typeof(int));
+
             InitializeComponent();
         }
         private Core.Data.Planta _planta;
         private List<Core.Data.Nudo> _nudosList;
         private Nudo nudo;
         private DateTime fecha = DateTime.Now;
+        private DataSet ds = new DataSet();
         public DateTime Fecha
         {
             get { return this.fecha; }
@@ -54,6 +64,22 @@ namespace MapeoDeAlgodon
                 nudo.BackColor = Color.LightGray;
             }
         }
+        void SavePosition(Point Point, Size size, string name) {
+
+            //ds.Tables.Add("nudo");
+            //ds.Tables["nudo"].Columns.Add("posx",typeof(int));
+            //ds.Tables["nudo"].Columns.Add("posy", typeof(int));
+            //ds.Tables["nudo"].Columns.Add("posname", typeof(string));
+
+            DataRow dr = ds.Tables["Nudo"].NewRow();
+            dr["posx"] = Point.X;
+            dr["posy"] = Point.Y;
+            dr["name"] = name;
+            dr["Width"] = size.Width;
+            dr["height"] = size.Height;
+            ds.Tables["nudo"].Rows.Add(dr);
+
+        }
         private void DrawerNudos()
         {
             if (this._planta != null)
@@ -63,14 +89,30 @@ namespace MapeoDeAlgodon
                 {
                     Nudo nudo = num.Current as Nudo;
 
+                    SavePosition(nudo.Location,nudo.Size, nudo.Name);//save...
+
                     foreach (Core.Data.Nudo n in _planta.Nudo)
                     {
                         if (nudo.Name.Substring(4) == n.Pos)
                         {
-                            nudo.BackColor = GetColor(n);
+                            foreach (Core.Data.State s in n.Estado)
+                            {
+                                if (Convert.ToDateTime(s.Fecha.ToShortDateString()) <= Convert.ToDateTime(this.fecha.ToShortDateString()))
+                                {
+                                    nudo.BackColor = GetColor(n);
+
+                                }
+                                else {
+                                    //nudo.BackColor = Color;
+                                }
+                              
+                            }                          
                         }
                     }
                 }
+
+                ds.WriteXml("Nudo.xml");
+
             }
         }
         private int GetEstado(string estado)
@@ -164,7 +206,6 @@ namespace MapeoDeAlgodon
             return color;
 
         }
-
         private Color GetColor(string estado)
         {
             Color color;
@@ -316,33 +357,31 @@ namespace MapeoDeAlgodon
         {
             nudo = sender as Nudo;
         }
-
         private void nudoBB_Click(object sender, EventArgs e)
         {
-            if (_planta != null)
-            {
+            //if (_planta != null)
+            //{
 
-                foreach (Core.Data.Nudo n in this._planta.Nudo)
-                {
-                    if (this.nudo.Name.Substring(4) == n.Pos)
-                    {
-                        nudo.BackColor = GetColor(n);
+            //    foreach (Core.Data.Nudo n in this._planta.Nudo)
+            //    {
+            //        if (this.nudo.Name.Substring(4) == n.Pos)
+            //        {
+            //            nudo.BackColor = GetColor(n);
 
-                        this.Nudo = n;
+            //            this.Nudo = n;
 
-                        //this.Nudo.Estado.Add(new State()
-                        //{
-                        //    NudoID = n.Id,
-                        //    //StateID = GetEstado(e.ClickedItem.Text.Substring(0, 2))
-                        //});
-                        //nudo.BackColor = GetColor(e.ClickedItem.Text.Substring(0, 2));
+            //            //this.Nudo.Estado.Add(new State()
+            //            //{
+            //            //    NudoID = n.Id,
+            //            //    //StateID = GetEstado(e.ClickedItem.Text.Substring(0, 2))
+            //            //});
+            //            //nudo.BackColor = GetColor(e.ClickedItem.Text.Substring(0, 2));
 
-                        //nuevo = false;
-                    }
-                }
-            }
+            //            //nuevo = false;
+            //        }
+            //    }
+            //}
         }
-
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

@@ -165,4 +165,10 @@
   <data name="Save_Nudo2" xml:space="preserve">
     <value>SAVE_NUDO_2</value>
   </data>
+  <data name="Read_Ultimo_nudo_State" xml:space="preserve">
+    <value>READ_ULTIMO_NUDO_STATE2</value>
+  </data>
+  <data name="Ultimo_Lote" xml:space="preserve">
+    <value>READ_ULTIMO_LOTE</value>
+  </data>
 </root>

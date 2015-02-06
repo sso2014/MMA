@@ -8,14 +8,13 @@ using Core.Data;
 
 namespace Data
 {
-    class dbConnection
+    public class dbConnection
     {
         public dbConnection()
         {
             myAdapter = new SqlDataAdapter();
             //conn = new SqlConnection(ResourceConnection.StringConnection2);
-            conn = new SqlConnection(ResourceConnection.Local);
-           
+            conn = new SqlConnection(ResourceConnection.Local);           
         }       
         private SqlDataAdapter myAdapter;
         private SqlConnection conn;
@@ -94,11 +93,9 @@ namespace Data
             }
             return datatable;
         }
-        public int executeDeleteQuery(String _query, SqlParameter[] sqlParameter)       { 
-
-            
-            SqlCommand myCommand = new SqlCommand();
-            
+        public int executeDeleteQuery(String _query, SqlParameter[] sqlParameter) { 
+                        
+            SqlCommand myCommand = new SqlCommand();            
             try
             {
                 myCommand.CommandType = System.Data.CommandType.StoredProcedure;
@@ -144,6 +141,10 @@ namespace Data
             catch (ArgumentException ae)
             {
                 string str = ae.Message;
+            }
+            catch (Exception exp)
+            {
+                string ms = exp.Message;
             }
             finally
             {

@@ -11,6 +11,6 @@ namespace Data
         {
             db = new BUS.UserBUS();
         }
-        internal BUS.UserBUS db = null;
+        protected BUS.UserBUS db = null;
     }
 }

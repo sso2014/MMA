@@ -133,6 +133,15 @@ namespace Data {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a READ_ULTIMO_NUDO_STATE2.
+        /// </summary>
+        internal static string Read_Ultimo_nudo_State {
+            get {
+                return ResourceManager.GetString("Read_Ultimo_nudo_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a SAVE_NUDO_STATE.
         /// </summary>
         internal static string Save_Estado {
@@ -183,6 +192,15 @@ namespace Data {
         internal static string Save_Planta {
             get {
                 return ResourceManager.GetString("Save_Planta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a READ_ULTIMO_LOTE.
+        /// </summary>
+        internal static string Ultimo_Lote {
+            get {
+                return ResourceManager.GetString("Ultimo_Lote", resourceCulture);
             }
         }
         

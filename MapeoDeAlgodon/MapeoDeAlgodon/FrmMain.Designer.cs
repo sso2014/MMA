@@ -39,8 +39,11 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CodigoPLantaLabel = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PlantaListBox = new System.Windows.Forms.ListBox();
+            this.LoteListBox = new System.Windows.Forms.ListBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.FechaComboBox = new System.Windows.Forms.ComboBox();
@@ -48,33 +51,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.LoteList = new System.Windows.Forms.ListBox();
-            this.PlantaList = new System.Windows.Forms.ListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.FiltroFecha_toolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.Anclar_toolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.RefreshtoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.PlantaLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Propiedades = new System.Windows.Forms.TabPage();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.panel10 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeLoteView1 = new MapeoDeAlgodon.TreeLoteView();
             this.ctrlPlanta1 = new MapeoDeAlgodon.CtrlPlanta();
             this.ctrlColorState1 = new MapeoDeAlgodon.CtrlColorState();
@@ -84,6 +81,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -99,6 +97,10 @@
             this.splitContainer4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Propiedades.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,22 +178,47 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeLoteView1);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.Controls.Add(this.NudolistBox);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.LoteList);
-            this.splitContainer1.Panel1.Controls.Add(this.PlantaList);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.Controls.Add(this.CodigoPLantaLabel);
             this.splitContainer1.Size = new System.Drawing.Size(1370, 678);
-            this.splitContainer1.SplitterDistance = 306;
+            this.splitContainer1.SplitterDistance = 311;
             this.splitContainer1.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.PlantaListBox);
+            this.panel1.Controls.Add(this.LoteListBox);
+            this.panel1.Controls.Add(this.treeLoteView1);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.NudolistBox);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(311, 678);
+            this.panel1.TabIndex = 0;
+            // 
+            // PlantaListBox
+            // 
+            this.PlantaListBox.FormattingEnabled = true;
+            this.PlantaListBox.Location = new System.Drawing.Point(155, 175);
+            this.PlantaListBox.Name = "PlantaListBox";
+            this.PlantaListBox.Size = new System.Drawing.Size(120, 173);
+            this.PlantaListBox.TabIndex = 31;
+            // 
+            // LoteListBox
+            // 
+            this.LoteListBox.FormattingEnabled = true;
+            this.LoteListBox.Location = new System.Drawing.Point(3, 175);
+            this.LoteListBox.Name = "LoteListBox";
+            this.LoteListBox.Size = new System.Drawing.Size(120, 173);
+            this.LoteListBox.TabIndex = 30;
             // 
             // imageList1
             // 
@@ -199,17 +226,17 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "algodon05.jpg");
             // 
-            // panel1
+            // panel3
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.FechaComboBox);
-            this.panel1.Location = new System.Drawing.Point(13, 467);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 97);
-            this.panel1.TabIndex = 22;
-            this.panel1.Visible = false;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.FechaComboBox);
+            this.panel3.Location = new System.Drawing.Point(12, 478);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(211, 97);
+            this.panel3.TabIndex = 28;
+            this.panel3.Visible = false;
             // 
             // label4
             // 
@@ -228,7 +255,6 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FechaComboBox
             // 
@@ -243,55 +269,38 @@
             this.NudolistBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.NudolistBox.FormattingEnabled = true;
-            this.NudolistBox.Location = new System.Drawing.Point(13, 349);
+            this.NudolistBox.Location = new System.Drawing.Point(6, 377);
             this.NudolistBox.Name = "NudolistBox";
             this.NudolistBox.Size = new System.Drawing.Size(127, 95);
-            this.NudolistBox.TabIndex = 20;
+            this.NudolistBox.TabIndex = 27;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 106);
+            this.label3.Location = new System.Drawing.Point(3, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 18;
+            this.label3.TabIndex = 26;
             this.label3.Text = "Lote:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 333);
+            this.label2.Location = new System.Drawing.Point(3, 361);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 17;
+            this.label2.TabIndex = 25;
             this.label2.Text = "Nudos:";
             this.label2.Visible = false;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 106);
+            this.label1.Location = new System.Drawing.Point(160, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 16;
+            this.label1.TabIndex = 24;
             this.label1.Text = "Planta de algodón:";
-            // 
-            // LoteList
-            // 
-            this.LoteList.FormattingEnabled = true;
-            this.LoteList.Location = new System.Drawing.Point(11, 129);
-            this.LoteList.Name = "LoteList";
-            this.LoteList.Size = new System.Drawing.Size(129, 186);
-            this.LoteList.TabIndex = 15;
-            // 
-            // PlantaList
-            // 
-            this.PlantaList.FormattingEnabled = true;
-            this.PlantaList.Location = new System.Drawing.Point(149, 129);
-            this.PlantaList.Name = "PlantaList";
-            this.PlantaList.Size = new System.Drawing.Size(129, 186);
-            this.PlantaList.TabIndex = 13;
             // 
             // splitContainer2
             // 
@@ -307,8 +316,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(1060, 678);
-            this.splitContainer2.SplitterDistance = 406;
+            this.splitContainer2.Size = new System.Drawing.Size(1055, 678);
+            this.splitContainer2.SplitterDistance = 411;
             this.splitContainer2.TabIndex = 18;
             // 
             // splitContainer3
@@ -327,8 +336,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.panel2);
-            this.splitContainer3.Size = new System.Drawing.Size(1060, 406);
-            this.splitContainer3.SplitterDistance = 763;
+            this.splitContainer3.Size = new System.Drawing.Size(1055, 411);
+            this.splitContainer3.SplitterDistance = 759;
             this.splitContainer3.TabIndex = 0;
             // 
             // toolStrip2
@@ -337,11 +346,12 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripSeparator2,
-            this.toolStripSplitButton1,
-            this.toolStripButton3});
+            this.FiltroFecha_toolStripSplitButton,
+            this.Anclar_toolStripButton,
+            this.RefreshtoolStripButton});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(763, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(759, 25);
             this.toolStrip2.TabIndex = 22;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -368,13 +378,33 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton3
+            // FiltroFecha_toolStripSplitButton
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Filtrar por fecha";
+            this.FiltroFecha_toolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FiltroFecha_toolStripSplitButton.Image = global::MapeoDeAlgodon.Properties.Resources.Filtro_Fecha;
+            this.FiltroFecha_toolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FiltroFecha_toolStripSplitButton.Name = "FiltroFecha_toolStripSplitButton";
+            this.FiltroFecha_toolStripSplitButton.Size = new System.Drawing.Size(32, 22);
+            this.FiltroFecha_toolStripSplitButton.Text = "toolStripSplitButton1";
+            // 
+            // Anclar_toolStripButton
+            // 
+            this.Anclar_toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Anclar_toolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("Anclar_toolStripButton.Image")));
+            this.Anclar_toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Anclar_toolStripButton.Name = "Anclar_toolStripButton";
+            this.Anclar_toolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.Anclar_toolStripButton.Text = "Anclar";
+            this.Anclar_toolStripButton.Click += new System.EventHandler(this.Anclar_toolStripButton_Click);
+            // 
+            // RefreshtoolStripButton
+            // 
+            this.RefreshtoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RefreshtoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("RefreshtoolStripButton.Image")));
+            this.RefreshtoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RefreshtoolStripButton.Name = "RefreshtoolStripButton";
+            this.RefreshtoolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.RefreshtoolStripButton.Text = "toolStripButton3";
             // 
             // dateTimePicker2
             // 
@@ -402,7 +432,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(293, 406);
+            this.panel2.Size = new System.Drawing.Size(292, 411);
             this.panel2.TabIndex = 20;
             // 
             // splitContainer4
@@ -415,8 +445,8 @@
             // splitContainer4.Panel1
             // 
             this.splitContainer4.Panel1.Controls.Add(this.ctrlColorState1);
-            this.splitContainer4.Size = new System.Drawing.Size(289, 402);
-            this.splitContainer4.SplitterDistance = 251;
+            this.splitContainer4.Size = new System.Drawing.Size(288, 407);
+            this.splitContainer4.SplitterDistance = 253;
             this.splitContainer4.TabIndex = 0;
             // 
             // tabControl1
@@ -428,33 +458,47 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1057, 262);
+            this.tabControl1.Size = new System.Drawing.Size(1052, 257);
             this.tabControl1.TabIndex = 0;
             // 
             // Propiedades
             // 
-            this.Propiedades.Controls.Add(this.panel10);
-            this.Propiedades.Controls.Add(this.listView1);
+            this.Propiedades.Controls.Add(this.splitContainer5);
             this.Propiedades.Location = new System.Drawing.Point(4, 22);
             this.Propiedades.Name = "Propiedades";
             this.Propiedades.Padding = new System.Windows.Forms.Padding(3);
-            this.Propiedades.Size = new System.Drawing.Size(1049, 236);
+            this.Propiedades.Size = new System.Drawing.Size(1044, 231);
             this.Propiedades.TabIndex = 0;
             this.Propiedades.Text = "Propiedades";
             this.Propiedades.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.panel10);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.listView1);
+            this.splitContainer5.Size = new System.Drawing.Size(1038, 225);
+            this.splitContainer5.SplitterDistance = 110;
+            this.splitContainer5.TabIndex = 0;
             // 
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel10.Controls.Add(this.button4);
-            this.panel10.Controls.Add(this.label14);
-            this.panel10.Controls.Add(this.comboBox1);
-            this.panel10.Controls.Add(this.label13);
-            this.panel10.Controls.Add(this.dateTimePicker1);
-            this.panel10.Location = new System.Drawing.Point(4, 142);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(872, 133);
-            this.panel10.TabIndex = 8;
+            this.panel10.Size = new System.Drawing.Size(1038, 110);
+            this.panel10.TabIndex = 10;
             // 
             // button4
             // 
@@ -466,57 +510,20 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Visible = false;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 69);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(43, 13);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Estado:";
-            this.label14.Visible = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(62, 66);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
-            this.comboBox1.Visible = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 22);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Fecha:";
-            this.label13.Visible = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(59, 22);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            this.dateTimePicker1.Visible = false;
-            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(4, 2);
+            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(872, 123);
+            this.listView1.Size = new System.Drawing.Size(1038, 111);
             this.listView1.SmallImageList = this.imageList1;
-            this.listView1.TabIndex = 7;
+            this.listView1.TabIndex = 12;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -528,39 +535,15 @@
             this.columnHeader2.Text = "Estado";
             this.columnHeader2.Width = 324;
             // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
-            this.toolStripSplitButton1.Image = global::MapeoDeAlgodon.Properties.Resources.Filtro_Fecha;
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 22);
-            this.toolStripMenuItem2.Text = "20/12/2014";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 22);
-            this.toolStripMenuItem3.Text = "20/1/2015";
-            // 
             // treeLoteView1
             // 
             this.treeLoteView1.ImageIndex = 0;
             this.treeLoteView1.ImageList = this.imageList1;
-            this.treeLoteView1.Location = new System.Drawing.Point(6, 8);
+            this.treeLoteView1.Location = new System.Drawing.Point(6, 3);
             this.treeLoteView1.Name = "treeLoteView1";
             this.treeLoteView1.SelectedImageIndex = 0;
-            this.treeLoteView1.Size = new System.Drawing.Size(272, 80);
-            this.treeLoteView1.TabIndex = 23;
+            this.treeLoteView1.Size = new System.Drawing.Size(272, 134);
+            this.treeLoteView1.TabIndex = 29;
             // 
             // ctrlPlanta1
             // 
@@ -574,7 +557,7 @@
             this.ctrlPlanta1.Location = new System.Drawing.Point(3, 28);
             this.ctrlPlanta1.Name = "ctrlPlanta1";
             this.ctrlPlanta1.Nudo = null;
-            this.ctrlPlanta1.Size = new System.Drawing.Size(757, 370);
+            this.ctrlPlanta1.Size = new System.Drawing.Size(753, 375);
             this.ctrlPlanta1.TabIndex = 18;
             // 
             // ctrlColorState1
@@ -584,7 +567,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ctrlColorState1.Location = new System.Drawing.Point(3, 1);
             this.ctrlColorState1.Name = "ctrlColorState1";
-            this.ctrlColorState1.Size = new System.Drawing.Size(285, 241);
+            this.ctrlColorState1.Size = new System.Drawing.Size(284, 243);
             this.ctrlColorState1.TabIndex = 0;
             // 
             // FrmMain
@@ -595,7 +578,6 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "FrmMain";
             this.Text = "Mapeo Algodón 1.0v";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -603,13 +585,14 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -627,8 +610,11 @@
             this.splitContainer4.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.Propiedades.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,33 +632,13 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox LoteList;
-        private System.Windows.Forms.ListBox PlantaList;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label PlantaLabel;
         private CtrlPlanta ctrlPlanta1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox NudolistBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox FechaComboBox;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Propiedades;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button4;
-        private TreeLoteView treeLoteView1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private CtrlColorState ctrlColorState1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -680,9 +646,26 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSplitButton FiltroFecha_toolStripSplitButton;
+        private System.Windows.Forms.ToolStripButton Anclar_toolStripButton;
+        private System.Windows.Forms.Panel panel1;
+        private TreeLoteView treeLoteView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox FechaComboBox;
+        private System.Windows.Forms.ListBox NudolistBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox PlantaListBox;
+        private System.Windows.Forms.ListBox LoteListBox;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ToolStripButton RefreshtoolStripButton;
     }
 }

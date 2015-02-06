@@ -69,6 +69,7 @@
     <Compile Include="CtrlPlanta.Designer.cs">
       <DependentUpon>CtrlPlanta.cs</DependentUpon>
     </Compile>
+    <Compile Include="DrawablePlanta.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,7 +100,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDrawable.cs" />
+    <Compile Include="IMain.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="IviewLote.cs" />
+    <Compile Include="IViewNudo.cs" />
+    <Compile Include="IViewPlanta.cs" />
     <Compile Include="Nudo.cs">
       <SubType>UserControl</SubType>
     </Compile>

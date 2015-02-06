@@ -74,6 +74,13 @@ namespace Data.DAO
             parameters[1].Value = loteid;
             conn.executeInsertQuery(Query.Save_Planta, parameters);
         }
+        public DataTable getUltimoNudoAndState() {
+            return conn.executeSelectQuery(Query.Read_Ultimo_nudo_State, null);
+        }
+        public DataTable getUltimoLote() {
+            return conn.executeSelectQuery(Query.Ultimo_Lote, null);
+        }
+
         public void InsertEstado(string nudoID, DateTime fecha, string estadoid)
         {
 
@@ -82,7 +89,7 @@ namespace Data.DAO
                 SqlParameter[] parameters = new SqlParameter[3];
                 parameters[0] = new SqlParameter("@NUDOID", SqlDbType.Int);
                 parameters[0].Value = nudoID;
-                parameters[1] = new SqlParameter("@FECHA", SqlDbType.SmallDateTime);
+                parameters[1] = new SqlParameter("@FECHA", SqlDbType.DateTime);
                 parameters[1].Value = fecha;
                 parameters[2] = new SqlParameter("@ESTADOID", SqlDbType.Int);
                 parameters[2].Value = estadoid;

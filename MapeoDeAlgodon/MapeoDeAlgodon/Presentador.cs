@@ -43,7 +43,7 @@ namespace MapeoDeAlgodon
             if (this.view.CreateNudo != null)
             {
                 this.repositorio.InsertNudo(view.CreateNudo);
-                this.view.LoadLotes(repositorio.Lotes());
+                //this.view.LoadLotes(repositorio.Lotes());
             }
         }
         private void OnSelectedPlanta()

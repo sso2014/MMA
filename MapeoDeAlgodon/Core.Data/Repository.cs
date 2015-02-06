@@ -6,7 +6,7 @@ using Core.Data;
 
 namespace Data
 {
-    public class Repository : BaseRepository
+    public class Repository : BaseRepository, Data.IRepository
     {
         private List<Lote> loteList;
         private List<Planta> plantaList;
@@ -38,7 +38,6 @@ namespace Data
         }
         public List<Lote> Lotes()
         {
-
             CreateLists();
 
             foreach (Lote l in loteList)
@@ -56,6 +55,7 @@ namespace Data
                             {
                                 if (p.Nudo == null)
                                     p.Nudo = new List<Nudo>();
+                                n.Estado = new List<State>();
                                 p.Nudo.Add(n);
                                 foreach (State s in stateList)
                                 {
@@ -88,7 +88,7 @@ namespace Data
         public void InsertLote(Lote lote)
         {
             db.InsertLote(lote);
-            loteList.Add(lote);
+            loteList.Add(db.SelectUltimoLote());
         }
         public Planta GetPlantaById(string id)
         {

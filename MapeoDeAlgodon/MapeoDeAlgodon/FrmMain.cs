@@ -13,7 +13,7 @@ using System.Windows.Forms.DataVisualization;
 
 namespace MapeoDeAlgodon
 {
-    public partial class FrmMain : Form, IView
+    public partial class FrmMain : Form, IView, MapeoDeAlgodon.IMain
     {
         public FrmMain()
         {
@@ -35,27 +35,20 @@ namespace MapeoDeAlgodon
         private List<Core.Data.Nudo> nudoList;
         private List<Core.Data.State> estadoList;
 
+        Core.Data.Planta _tempPlanta;
+
         int ActualPlanta;
         int ActulaLote;
-
         private void BindControl()
         {
-            LoteList.SelectedIndexChanged += OnSelectedLote;
-            PlantaList.SelectedIndexChanged += OnSelectedPlanta;
+            this.LoteListBox.SelectedIndexChanged += OnSelectedLote;
+            this.PlantaListBox.SelectedIndexChanged += OnSelectedPlanta;
             this.NudolistBox.SelectedIndexChanged += OnSelectedNudo;
-            CrearPlanta.button1.Click += OnCreatePlanta;
-            ctrlPlanta1.contextMenuStrip1.ItemClicked += OnCreateNudo;
-            //ctrlPlanta1.MouseMove+=Mouse_Move_Nudo;
-            CrearLote.button1.Click += OnCreateLote;
-            
-            
+            this.CrearPlanta.button1.Click += OnCreatePlanta;
+            this.ctrlPlanta1.contextMenuStrip1.ItemClicked += OnCreateNudo;
+            this.CrearLote.button1.Click += OnCreateLote;       
+            //this.RefreshtoolStripButton.Click+=
         }
-        //void Mouse_Move_Nudo(object sender, MouseEventArgs e) {
-
-        //    Nudo n = (Nudo)sender;
-            
-           
-        //}
         void OnSelectedNudo(object sender, EventArgs e)
         {
             if (this.SelectedNudo != null)
@@ -81,8 +74,12 @@ namespace MapeoDeAlgodon
         {
             if (CreatedNudo != null)
             {
-                this.ActulaLote = LoteList.SelectedIndex;
-                this.ActualPlanta = this.PlantaList.SelectedIndex;
+                
+                if (!_anclar){
+                this.ActulaLote = LoteListBox.SelectedIndex;
+                this.ActualPlanta = this.PlantaListBox.SelectedIndex;
+                }
+
                 this.CreatedNudo();
             }
         }
@@ -95,7 +92,7 @@ namespace MapeoDeAlgodon
         }
         public Core.Data.Planta SelectPlanta
         {
-            get { return PlantaList.SelectedItem as Core.Data.Planta; }
+            get { return PlantaListBox.SelectedItem as Core.Data.Planta; }
         }
         public void LoadPlantas(List<Core.Data.Planta> plantas)
         {
@@ -104,23 +101,24 @@ namespace MapeoDeAlgodon
         public void LoadPlanta(Core.Data.Planta p)
         {
             NudolistBox.DataSource = p.Nudo;
-            ctrlPlanta1.DataSouce = p;
+            if (!_anclar)
+            {
+                this._tempPlanta = p;
+                this.ctrlPlanta1.Fecha = this.dateTimePicker2.Value;
+                ctrlPlanta1.DataSouce = this._tempPlanta;
+            }
             PlantaLabel.Text = p.Codigo;
-
             TempPlanta(p, "19/01/2015");
-
         }
         private void addDataListView(Core.Data.Nudo n) {
 
             this.listView1.Items.Clear();
-
             foreach(Core.Data.State s in n.Estado)
             {
                 this.listView1.Items.Add(new ListViewItem(new string[]
                 { 
                     s.Fecha.ToShortDateString(), s.Descripcion
-                },0));
-              
+                },0));              
             }
         }
         private void TempPlanta(Core.Data.Planta p, string fecha)
@@ -164,31 +162,26 @@ namespace MapeoDeAlgodon
             if (lotes.Count > 0)
             {
 
-                LoteList.DataSource = lotes;
+                LoteListBox.DataSource = lotes;
                 CrearPlanta.comboBox2.DataSource = lotes;
-                PlantaList.DataSource = ((Core.Data.Lote)LoteList.SelectedItem).Plantas;
-                ////ctrlPlanta1.DataSouce = listBox1.SelectedItem;   
-                this.LoteList.SelectedIndex = ActulaLote;
-
-
-                if (PlantaList.SelectedItem != null)
+                PlantaListBox.DataSource = ((Core.Data.Lote)LoteListBox.SelectedItem).Plantas;
+          
+                this.LoteListBox.SelectedIndex = ActulaLote;
+          
+                if (PlantaListBox.SelectedItem != null)
                 {
-                    this.PlantaList.SelectedIndex = ActualPlanta;
-
-                    this.LoadNudos(((Core.Data.Planta)PlantaList.SelectedItem).Nudo);
+                    this.PlantaListBox.SelectedIndex = ActualPlanta;
+                    this.LoadNudos(((Core.Data.Planta)PlantaListBox.SelectedItem).Nudo);
                 }
-
-                this.AddLoteTreeView(lotes);
-
-               
+                this.AddLoteTreeView(lotes);               
             }
-
             this.loteList = lotes.ToList();
-            this.LoteList.DataSource = loteList;
+            this.LoteListBox.DataSource = loteList;
         }
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //CrearPlanta = new FrmCreatePlanta();                             
+            //CrearPlanta = new FrmCreatePlanta();        
+            this.ctrlPlanta1.Fecha = this.dateTimePicker2.Value;         
         }
         private void nuevaPlantaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -202,13 +195,13 @@ namespace MapeoDeAlgodon
         {
             if (lote != null)
             {
-                PlantaList.DataSource = lote.Plantas;
+                PlantaListBox.DataSource = lote.Plantas;
                 this.AddLoteTreeView(lote);
             }
         }
         public Core.Data.Lote SelectLote
         {
-            get { return this.LoteList.SelectedItem as Core.Data.Lote; }
+            get { return this.LoteListBox.SelectedItem as Core.Data.Lote; }
         }
         public Core.Data.Lote CreateLote
         {
@@ -226,7 +219,6 @@ namespace MapeoDeAlgodon
         {
             //EstadolistBox.DataSource = nudo.Estado;
             addDataListView(nudo);
-
         }
         void FiltrePlanta() {         
         }
@@ -314,7 +306,7 @@ namespace MapeoDeAlgodon
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            comboBox1.Items.Clear();
+            //comboBox1.Items.Clear();
 
             ListView.SelectedListViewItemCollection breakfast =
             this.listView1.SelectedItems;
@@ -323,8 +315,8 @@ namespace MapeoDeAlgodon
             foreach (ListViewItem item in breakfast)
             {
                 //price += Double.Parse(item.SubItems[1].Text);
-                 dateTimePicker1.Value = Convert.ToDateTime(item.SubItems[0].Text);
-                 comboBox1.Text = item.SubItems[1].Text;
+                 //dateTimePicker1.Value = Convert.ToDateTime(item.SubItems[0].Text);
+                 //comboBox1.Text = item.SubItems[1].Text;
             }
 
             // Output the price to TextBox1.
@@ -337,6 +329,25 @@ namespace MapeoDeAlgodon
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool _anclar = false; 
+        private void Anclar_toolStripButton_Click(object sender, EventArgs e)
+        {
+            if (!_anclar)
+            {
+                _anclar = true;
+                this.panel1.Enabled = false;
+            }
+            else {
+                _anclar = false;
+                this.panel1.Enabled = true;
+            }
+        }
+
+        private void PlantaList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }       

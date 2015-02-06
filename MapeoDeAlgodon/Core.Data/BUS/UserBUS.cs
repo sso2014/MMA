@@ -7,7 +7,7 @@ using Core.Data;
 
 namespace Data.BUS
 {
-    class UserBUS
+   public  class UserBUS
     {
         public UserBUS()
         {
@@ -18,12 +18,21 @@ namespace Data.BUS
         public void DeleteNudoState(Nudo n) {
             dao.deleteNudoState(n.Id);
         }
-        public void InsertNodoState(Nudo nudo) {
-
-            dao.InsertEstado(nudo.Id.ToString(),
-                nudo.Estado[0].Fecha, 
-                nudo.Estado[0].StateID.ToString());
+        public Lote SelectUltimoLote()
+        {
+            Lote lote = null;
+            foreach(DataRow dr in dao.getUltimoLote().Rows){
+                lote = new Lote()
+                {
+                    LoteID = dr["LOTEID"].ToString(),
+                    Nombre = dr["NOMBRE"].ToString(),
+                    CampoId = dr["CAMPOID"].ToString()
+                };
+            }
+            return lote;
+            
         }
+
         public void InsertPlanta(Planta planta)
         {
             if (planta != null)
@@ -34,19 +43,29 @@ namespace Data.BUS
         public void DeleteNudo(Nudo nudo) {
             dao.deleteNudo(nudo.Id);   
         }
-
+        public void InsertIntoCampo(Campo campo) { 
+        }
+        public void UpdateCampo(Campo campo) { 
+        
+        }
+        public void DeleteCampo(Campo campo) { 
+            
+        }
         public void UpdateNudo(Nudo nudo) {
             if (nudo != null)
+            {
+                //DateTime t = nudo.Estado[0].Fecha;
                 //dao.updateNudo(nudo.Id, nudo.Estado[0].StateID);   
-                dao.InsertEstado(nudo.Id.ToString(), 
+                dao.InsertEstado(nudo.Id.ToString(),
                     nudo.Estado[nudo.Estado.Count - 1].Fecha,
                     nudo.Estado[nudo.Estado.Count - 1].StateID.ToString());
+            }
         }
         public void InsertNudo(Nudo nudo)    {  
 
             if (nudo != null)
             {
-                dao.insertIntoNudo(nudo.plantaID, nudo.Pos,nudo.Estado[nudo.Estado.Count - 1].Fecha, nudo.Estado[nudo.Estado.Count - 1].StateID);
+                dao.insertIntoNudo(nudo.plantaID, nudo.Pos,nudo.Estado[0].Fecha, nudo.Estado[0].StateID);
                 //dao.InsertEstado(this.GetUltimoNudo().ToString(), nudo.Estado[nudo.Estado.Count-1].StateID.ToString());
              
             }
@@ -88,6 +107,42 @@ namespace Data.BUS
             }
             return plantas;
         }
+        public Nudo SelectUltimoNudo()
+        {
+            Nudo nudo = null;
+            foreach (DataRow dr in this.dao.getUltimoNudoAndState().Rows)
+            {
+                if (nudo == null)
+                {
+                    nudo = new Nudo()
+                    {
+                        Id = Convert.ToInt32(dr["NUDOID"]),
+                        plantaID = dr["PLANTAID"].ToString(),
+                        Pos = dr["POS"].ToString(),
+                        Estado = new List<State>(){
+                            new State(){
+                                NudoID = Convert.ToInt32(dr["NUDOID"]),
+                                Fecha = Convert.ToDateTime(dr["fecha"]),
+                                StateID = Convert.ToInt32(dr["ESTADOID"]),
+                                Descripcion = dr["DESCRIPCION"].ToString()
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    nudo.Estado.Add(new State()
+                    {
+                        NudoID = Convert.ToInt32(dr["NUDOID"]),
+                        Fecha = Convert.ToDateTime(dr["fecha"]),
+                        StateID = Convert.ToInt32(dr["ESTADOID"]),
+                        Descripcion = dr["DESCRIPCION"].ToString()
+                    });
+                }
+            }
+
+            return nudo;
+        }        
         public List<Nudo> GetNudos()
         {
             List<Nudo> nudos = new List<Nudo>();
@@ -98,7 +153,7 @@ namespace Data.BUS
                     Id = Convert.ToInt32(dr["NUDOID"]),
                     plantaID = dr["PLANTAID"].ToString(),
                     Pos = dr["POS"].ToString(),
-                    Estado = new List<State>()         
+                    //Estado = new List<State>()         
                 
                 });
             }

@@ -1,0 +1,9 @@
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\obj\Debug\DataV2.csprojResolveAssemblyReference.cache
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\DataV2.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\DataV2.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\Core.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\Data.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\Data.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\bin\Debug\Core.pdb
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\obj\Debug\DataV2.dll
+C:\Users\Administrador\Documents\Visual Studio 2013\Projects\MapeoDeAlgodon\DataV2\obj\Debug\DataV2.pdb
